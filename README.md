@@ -48,15 +48,13 @@ Se correto, cria-se uma sessão ($_SESSION['usuario']).
 
 Arquivo verifica_sessao.php protege páginas internas, garantindo acesso apenas a usuários logados.
 
-Usuários autenticados podem acessar:
+Usuários autenticados podem acessar o Dashboard com :
 
 Cadastro e listagem de produtos
 
 Gerenciamento de categorias
 
-Criação e listagem de pedidos
-
-Gerenciamento de usuários (admin)
+Criação e listagem de Produtos
 
 # Estrutura do projeto:
 
