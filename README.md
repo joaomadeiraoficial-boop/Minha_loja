@@ -75,8 +75,6 @@ O sistema da Minha Loja segue o padrão MVC e o fluxo principal de autenticaçã
 
 -Ao enviar os dados, o formulário chama autentica.php.
 
--Este arquivo é responsável por:
-
 -Validar os campos recebidos (e-mail e senha).
 
 -Consultar o banco de dados usando PDO (pdo.php).
