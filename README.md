@@ -14,7 +14,7 @@ Uso de prepared statements para evitar SQL Injection.
 
 # Tecnologias Utilizadas
 
-PHP
+PHP (VisualCode)
 
 MySQL
 
@@ -33,7 +33,7 @@ Visual Studio Code
 
 - PHP 8+
 - Servidor Apache (ex: XAMPP, WAMP ou similar)
-- MySQL/MariaDB
+- MySQL/Myadmin
 - Navegador atualizado
 
 ---
@@ -63,25 +63,61 @@ Senha: 123
 
 # Fluxo do Sistema
 
-O usuário acessa index.php e faz login.
+O sistema da Minha Loja segue o padrão MVC e o fluxo principal de autenticação e gerenciamento é descrito abaixo:
 
-utentica.php (valida, cria sessão, regenera ID) 
+1. Acesso à aplicação
 
-As credenciais são verificadas no banco via PDO (pdo.php).
+-O usuário abre o navegador e acessa index.php.
 
-Senha validada com password_verify.
+-A página inicial apresenta o formulário de login.
 
-Se correto, cria-se uma sessão ($_SESSION['usuario']).
+2. Processamento de login
 
-Arquivo verifica_sessao.php protege páginas internas, garantindo acesso apenas a usuários logados.
+-Ao enviar os dados, o formulário chama autentica.php.
 
-Usuários autenticados podem acessar o Dashboard com :
+-Este arquivo é responsável por:
 
-Cadastro e listagem de produtos
+-Validar os campos recebidos (e-mail e senha).
 
-Gerenciamento de categorias
+-Consultar o banco de dados usando PDO (pdo.php).
 
-Criação e listagem de Produtos
+-Verificar a senha com password_verify($senha_digitada, $hash_bd).
+
+-Criar a sessão do usuário com $_SESSION['usuario'].
+
+-Regenerar o ID da sessão para aumentar a segurança (session_regenerate_id(true)).
+
+3. Proteção das páginas internas
+
+-Todas as páginas privadas incluem verifica_sessao.php.
+
+-Este arquivo verifica se a sessão existe e é válida, evitando acesso não autorizado.
+
+-Caso o usuário não esteja autenticado, ele é redirecionado para a página de login.
+
+4. Área autenticada / Dashboard
+
+-Usuários autenticados acessam o Dashboard, com funcionalidades de gerenciamento da loja:
+
+-Cadastro de produtos: criação de novos produtos com nome, descrição, preço, estoque e categoria.
+
+-Listagem de produtos: exibe todos os produtos cadastrados, permitindo edição e exclusão.
+
+-Gerenciamento de categorias: criar, listar, editar e excluir categorias.
+
+-Cada ação é realizada por um Controller que chama o Model correspondente para acessar ou modificar o banco via PDO, e retorna os dados para a View.
+
+5. Fluxo de CRUD (Produtos, Categorias e Pedidos)
+
+-Controller: recebe requisição (ex.: criar produto) → chama Model → Model executa query no banco → Controller retorna dados → View mostra resultado ao usuário.
+
+-Model: lida diretamente com o banco de dados usando queries preparadas (prepare() + execute()).
+
+-View: interface HTML/PHP que exibe os dados (listas, formulários, alertas de sucesso/erro).
+
+6. Logout / Finalização de sessão
+
+-Usuário pode encerrar a sessão, que chama um script de logout, destruindo $_SESSION e redirecionando para index.php.
 
 # Estrutura do projeto:
 
