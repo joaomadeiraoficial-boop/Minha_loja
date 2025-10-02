@@ -52,11 +52,13 @@ Abra o phpMyAdmin ou MySQL.
 
 Crie um banco com o mesmo nome do projeto (Minha_loja):
  ```bash
-CREATE DATABASE minha_loja CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE Minha_loja CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 Importe o arquivo SQL:
 file:/minha_loja.sql
+
+E coloque em: C:\xampp\mysql\data
 
 # Usuário/Senha de teste
 
