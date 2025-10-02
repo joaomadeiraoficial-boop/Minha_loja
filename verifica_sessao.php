@@ -21,10 +21,14 @@ if (empty($_SESSION['usuario'])) {
 if (isset($_SESSION['ultimo_acesso'])) {
     $tempo_inativo = time() - $_SESSION['ultimo_acesso'];
     if ($tempo_inativo > SESSION_TIMEOUT) {
-        // Destrói a sessão e redireciona para login
-        session_unset();
-        session_destroy();
+        // Define mensagem antes de limpar sessão
         flash_set('info', 'Sua sessão expirou. Faça login novamente.');
+
+        // Limpa apenas os dados do usuário, mas mantém a sessão ativa para a flash message
+        unset($_SESSION['usuario']);
+        unset($_SESSION['perfil']);
+        unset($_SESSION['ultimo_acesso']);
+
         header('Location: /minha_loja/index.php');
         exit;
     }
