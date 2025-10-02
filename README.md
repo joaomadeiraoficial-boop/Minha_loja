@@ -1,7 +1,29 @@
 # Minha Loja
 
-Um sistema simples de gerenciamento de uma padaria online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados.
+Um sistema simples de gerenciamento de uma padaria online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados e segue uma estrutura MVC simples, que permite:
 
+Login e autenticação de usuários (com controle de sessão).
+
+Cadastro, listagem e gerenciamento de produtos.
+
+Criação e acompanhamento de pedidos e itens de pedidos.
+
+Organização por categorias de produtos.
+
+Uso de prepared statements para evitar SQL Injection.
+
+# Tecnologias Utilizadas
+
+PHP
+
+MySQL
+
+Apache
+(XAMPP/WAMP)
+
+Estrutura MVC (Models / Controllers / Views)
+
+PDO (PHP Data Objects)
 ---
 
 ## Requisitos
