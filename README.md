@@ -26,6 +26,7 @@ Estrutura MVC (Models / Controllers / Views)
 PDO (PHP Data Objects)
 
 Visual Studio Code
+
 ---
 
 ## Requisitos
