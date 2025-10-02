@@ -6,7 +6,7 @@ require_once __DIR__ . '/../utils.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+unset($_SESSION['flash']);
 
 $MAX_ATTEMPTS = 3;
 $LOCK_MINUTES = 1;

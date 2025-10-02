@@ -1,10 +1,13 @@
 <?php
+session_start();
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/utils.php';
+
 
 $erro = flash_get('erro');
 $sucesso = flash_get('sucesso');
 $info = flash_get('info');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -99,15 +102,10 @@ button:hover {
     <h2>Login</h2>
 
     <!-- Mensagens -->
-    <?php if ($erro): ?>
-        <div class="msg erro"><?= e($erro) ?></div>
-    <?php endif; ?>
-    <?php if ($sucesso): ?>
-        <div class="msg sucesso"><?= e($sucesso) ?></div>
-    <?php endif; ?>
-    <?php if ($info): ?>
-        <div class="msg info"><?= e($info) ?></div>
-    <?php endif; ?>
+    <?php if ($erro): ?><div class="msg erro"><?= e($erro) ?></div><?php endif; ?>
+     <?php if ($sucesso): ?><div class="msg sucesso"><?= e($sucesso) ?></div><?php endif; ?>
+    <?php if ($info): ?><div class="msg info"><?= e($info) ?></div><?php endif; ?>
+
 
     <!-- Formulário -->
     <form action="controllers/autentica.php" method="post" novalidate>
