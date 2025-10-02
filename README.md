@@ -1,6 +1,6 @@
 # Minha Loja
 
-Um sistema simples de gerenciamento de loja online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados.
+Um sistema simples de gerenciamento de uma padaria online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados.
 
 ---
 
@@ -58,7 +58,7 @@ Criação e listagem de pedidos
 
 Gerenciamento de usuários (admin)
 
-Estrutura do projeto:
+# Estrutura do projeto:
 
 Models/ → consultas SQL e lógica de dados.
 
