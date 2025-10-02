@@ -1,10 +1,10 @@
-#  Minha Loja
+# Minha Loja
 
 Um sistema simples de gerenciamento de loja online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados.
 
 ---
 
-##  Requisitos
+## Requisitos
 
 - PHP 8+
 - Servidor Apache (ex: XAMPP, WAMP ou similar)
@@ -18,9 +18,68 @@ Um sistema simples de gerenciamento de loja online desenvolvido em **PHP** com u
 1. Clone este repositório:
    ```bash
    git clone https://github.com/vitoriaju/Minha_loja.git
+2. Copie a pasta para o diretório do servidor:
+- Exemplo: C:\xampp\htdocs\
+
 # Como criar o banco de dados
 
-1. Abra o phpMyAdmin ou MySQL.
-2. Crie um banco com o mesmo nome do projeto (minha_loja).
-3. Importe o arquivo `database/minha_loja.sql`.
-4. Configure o `config/config.php` com usuário e senha do MySQL.
+Abra o phpMyAdmin ou MySQL.
+
+Crie um banco com o mesmo nome do projeto:
+CREATE DATABASE minha_loja CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+3- Importe o arquivo SQL:
+minha_loja.sql
+
+# Usuário/Senha de teste
+
+Usuário: admin@teste.com
+
+Senha: 123
+
+# Fluxo do Sistema
+
+O usuário acessa index.php e faz login.
+
+As credenciais são verificadas no banco via PDO (pdo.php).
+
+Senha validada com password_verify.
+
+Se correto, cria-se uma sessão ($_SESSION['usuario']).
+
+Arquivo verifica_sessao.php protege páginas internas, garantindo acesso apenas a usuários logados.
+
+Usuários autenticados podem acessar:
+
+Cadastro e listagem de produtos
+
+Gerenciamento de categorias
+
+Criação e listagem de pedidos
+
+Gerenciamento de usuários (admin)
+
+Estrutura do projeto:
+
+Models/ → consultas SQL e lógica de dados.
+
+Controllers/ → recebem requisições e controlam fluxo (login, CRUDs).
+
+Views/ → páginas HTML/PHP que exibem dados.
+
+utils.php → funções auxiliares (formatação, redirecionamentos).
+
+gera_hash.php → geração de hash de senha.
+
+verifica_sessao.php → valida sessões.
+
+# Segurança
+
+Senhas salvas com password_hash e verificadas com password_verify.
+
+Uso de prepared statements via PDO para evitar SQL Injection.
+
+Sessões validadas em todas as páginas internas.
+
+# Erros comuns
+Quando você baixa o arquivo ZIP do GitHub, a pasta extraída vem com o nome Minha_loja-main.
+O ideal é renomear a pasta, removendo o sufixo -main, deixando apenas Minha_loja.
