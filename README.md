@@ -60,9 +60,13 @@ file:/minha_loja.sql
 
 # Usuário/Senha de teste
 
-Usuário: admin@teste.com
+Usuário user : admin@teste.com
 
-Senha: 123
+Senha user : 123
+
+Usuário admin: admin@teste1.com
+
+Senha Admin: 123456
 
 O usuário já está incluso no arquivo minha_loja.sql.
 
