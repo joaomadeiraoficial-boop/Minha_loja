@@ -40,6 +40,8 @@ Senha: 123
 
 O usuário acessa index.php e faz login.
 
+utentica.php (valida, cria sessão, regenera ID) 
+
 As credenciais são verificadas no banco via PDO (pdo.php).
 
 Senha validada com password_verify.
@@ -64,9 +66,9 @@ Controllers/ → recebem requisições e controlam fluxo (login, CRUDs).
 
 Views/ → páginas HTML/PHP que exibem dados.
 
-utils.php → funções auxiliares (formatação, redirecionamentos).
+indexphp → pagina ne login.
 
-gera_hash.php → geração de hash de senha.
+utils.php → funções auxiliares (formatação, redirecionamentos).
 
 verifica_sessao.php → valida sessões.
 
