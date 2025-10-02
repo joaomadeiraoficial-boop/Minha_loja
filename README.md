@@ -21,6 +21,6 @@ Um sistema simples de gerenciamento de loja online desenvolvido em **PHP** com u
 # Como criar o banco de dados
 
 1. Abra o phpMyAdmin ou MySQL.
-2. Crie um banco com o mesmo nome do projeto (ex: minha_loja).
+2. Crie um banco com o mesmo nome do projeto (minha_loja).
 3. Importe o arquivo `database/minha_loja.sql`.
 4. Configure o `config/config.php` com usuário e senha do MySQL.
