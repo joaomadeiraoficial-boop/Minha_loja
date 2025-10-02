@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../verifica_sessao.php';
+require_admin('/index.php');
 require_once __DIR__ . '/../config/conexao.php';
 
 

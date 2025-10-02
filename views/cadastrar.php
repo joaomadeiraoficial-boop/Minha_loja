@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../utils.php';
+require_once __DIR__ . '/../verifica_sessao.php';
+require_admin('/minha_loja/views/sem_permissao.php');
+require_once __DIR__ . '/../config/conexao.php';
 
 $erro = flash_get('erro');
 $sucesso = flash_get('sucesso');
@@ -88,7 +89,7 @@ button:hover { background-color: #a66d3a; }
     </form>
 
     <div class="links">
-        <a href="../index.php">Voltar ao Login</a>
+        <a href="../views/dashboard.php">Voltar </a>
     </div>
 </div>
 </body>

@@ -213,7 +213,7 @@ $erro = flash_get('erro');
             <div class="subtitle">Gerencie seus produtos, vendas e usuários aqui.</div>
           </div>
           <div>
-            <a class="btn ghost" href="sem_permissao.php">Permissões</a>
+            
             <a class="btn primary" href="cadastrar.php">Novo Cadastro</a>
           </div>
         </div>

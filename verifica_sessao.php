@@ -8,13 +8,20 @@ require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/utils.php';
 
 // Tempo máximo de inatividade em segundos (ex: 15 minutos)
-define('SESSION_TIMEOUT', 2 * 2);
+define('SESSION_TIMEOUT', 10 * 60);
 
 // Verifica se o usuário está logado
 if (empty($_SESSION['usuario'])) {
     flash_set('info', 'Por favor faça login para acessar essa página.');
     header('Location: /minha_loja/index.php');
     exit;
+}
+//verefica admin :
+function require_admin(string $redirect = '/index.php') {
+    if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'admin') {
+        header('Location: /minha_loja/views/sem_permissao.php');
+        exit;
+    }
 }
 
 // Expiração de sessão por tempo de inatividade
