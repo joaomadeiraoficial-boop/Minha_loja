@@ -2,15 +2,15 @@
 
 Um sistema simples de gerenciamento de uma padaria online desenvolvido em **PHP** com uso de **PDO** para conexão ao banco de dados e segue uma estrutura MVC simples, que permite:
 
-Login e autenticação de usuários (com controle de sessão).
+**Login e autenticação de usuários (com controle de sessão).**
 
-Cadastro, listagem e gerenciamento de produtos.
+**Cadastro, listagem e gerenciamento de produtos.**
 
-Criação e acompanhamento de pedidos e itens de pedidos.
+**Criação e acompanhamento de pedidos e itens de pedidos.**
 
-Organização por categorias de produtos.
+**Organização por categorias de produtos.**
 
-Uso de prepared statements para evitar SQL Injection.
+**Uso de prepared statements para evitar SQL Injection.**
 
 # Tecnologias Utilizadas
 
@@ -43,17 +43,20 @@ Visual Studio Code
 1. Clone este repositório:
    ```bash
    git clone https://github.com/vitoriaju/Minha_loja.git
-2. Copie a pasta para o diretório do servidor:
-- Exemplo: C:\xampp\htdocs\
+2. Extrair a pasta para o diretório do servidor:
+ C:\xampp\htdocs
 
 # Como criar o banco de dados
 
 Abra o phpMyAdmin ou MySQL.
 
 Crie um banco com o mesmo nome do projeto:
+ ```bash
 CREATE DATABASE minha_loja CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-3- Importe o arquivo SQL:
-minha_loja.sql
+```
+
+Importe o arquivo SQL:
+file:/minha_loja.sql
 
 # Usuário/Senha de teste
 
@@ -61,61 +64,67 @@ Usuário: admin@teste.com
 
 Senha: 123
 
+O usuário já está incluso no arquivo minha_loja.sql.
+
 # Fluxo do Sistema
 
 O sistema da Minha Loja segue o padrão MVC e o fluxo principal de autenticação e gerenciamento é descrito abaixo:
 
-1. Acesso à aplicação
+**1. Acesso à aplicação**
 
 -O usuário abre o navegador e acessa index.php.
 
 -A página inicial apresenta o formulário de login.
 
-2. Processamento de login
+**2. Processamento de login**
 
 -Ao enviar os dados, o formulário chama autentica.php.
 
--Validar os campos recebidos (e-mail e senha).
+-Validação dos campos (e-mail e senha).
 
--Consultar o banco de dados usando PDO (pdo.php).
+-Consulta ao banco via PDO (pdo.php).
 
--Verificar a senha com password_verify($senha_digitada, $hash_bd).
+-Verificação da senha com password_verify($senha_digitada, $hash_bd).
 
--Criar a sessão do usuário com $_SESSION['usuario'].
+-Criação da sessão ($_SESSION['usuario']).
 
--Regenerar o ID da sessão para aumentar a segurança (session_regenerate_id(true)).
+-Uso de cookies para manter a sessão ativa em páginas futuras e facilitar autenticação persistente.
 
-3. Proteção das páginas internas
+-Regeneração do ID da sessão (session_regenerate_id(true)) para aumentar a segurança.
+
+**3. Proteção das páginas internas**
 
 -Todas as páginas privadas incluem verifica_sessao.php.
 
--Este arquivo verifica se a sessão existe e é válida, evitando acesso não autorizado.
+-Este arquivo verifica se a sessão e os cookies existem e são válidos, evitando acesso não autorizado.
 
--Caso o usuário não esteja autenticado, ele é redirecionado para a página de login.
+-Caso o usuário não esteja autenticado, é redirecionado para a página de login.
 
-4. Área autenticada / Dashboard
+**4. Área autenticada / Dashboard**
 
 -Usuários autenticados acessam o Dashboard, com funcionalidades de gerenciamento da loja:
 
--Cadastro de produtos: criação de novos produtos com nome, descrição, preço, estoque e categoria.
+-Cadastro de produtos: nome, descrição, preço, estoque e categoria.
 
--Listagem de produtos: exibe todos os produtos cadastrados, permitindo edição e exclusão.
+-Listagem de produtos: permite edição e exclusão.
 
 -Gerenciamento de categorias: criar, listar, editar e excluir categorias.
 
+-Criação e listagem de pedidos e itens de pedidos.
+
 -Cada ação é realizada por um Controller que chama o Model correspondente para acessar ou modificar o banco via PDO, e retorna os dados para a View.
 
-5. Fluxo de CRUD (Produtos, Categorias e Pedidos)
+**5. Fluxo de CRUD (Produtos, Categorias e Pedidos)**
 
--Controller: recebe requisição (ex.: criar produto) → chama Model → Model executa query no banco → Controller retorna dados → View mostra resultado ao usuário.
+-Controller: recebe requisição → chama Model → Model executa query → Controller retorna dados → View mostra resultado.
 
--Model: lida diretamente com o banco de dados usando queries preparadas (prepare() + execute()).
+-Model: lida diretamente com o banco usando queries preparadas (prepare() + execute()).
 
 -View: interface HTML/PHP que exibe os dados (listas, formulários, alertas de sucesso/erro).
 
-6. Logout / Finalização de sessão
+**6. Logout / Finalização de sessão**
 
--Usuário pode encerrar a sessão, que chama um script de logout, destruindo $_SESSION e redirecionando para index.php.
+-Usuário pode encerrar a sessão, destruindo $_SESSION e os cookies relacionados, e é redirecionado para index.php.
 
 # Estrutura do projeto:
 
@@ -125,7 +134,7 @@ Controllers/ → recebem requisições e controlam fluxo (login, CRUDs).
 
 Views/ → páginas HTML/PHP que exibem dados.
 
-indexphp → pagina ne login.
+index.php → pagina ne login.
 
 utils.php → funções auxiliares (formatação, redirecionamentos).
 
@@ -140,5 +149,6 @@ Uso de prepared statements via PDO para evitar SQL Injection.
 Sessões validadas em todas as páginas internas.
 
 # Erros comuns
-Quando você baixa o arquivo ZIP do GitHub, a pasta extraída vem com o nome Minha_loja-main.
-O ideal é renomear a pasta, removendo o sufixo -main, deixando apenas Minha_loja.
+Quando você baixa o arquivo ZIP do GitHub, a pasta extraída vem com o nome **Minha_loja-main**.
+
+O ideal é renomear a pasta, removendo o sufixo **"-main"**, deixando apenas **"Minha_loja"**.
